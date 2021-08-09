@@ -20,6 +20,7 @@ fun List<User>.aggregate(): List<User> =
         .sortedByDescending { it.contributions }
 
 fun List<User>.aggregate2(): List<User> =
-    groupingBy { it.login }.fold(0) { acc, e -> acc + e.contributions }
+    groupingBy { it.login }
+        .fold(0) { acc, e -> acc + e.contributions }
         .map { (login, count) -> User(login, count) }
         .sortedByDescending { it.contributions }
